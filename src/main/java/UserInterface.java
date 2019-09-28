@@ -17,7 +17,11 @@ public class UserInterface extends JFrame implements ActionListener {
     JButton button9;
     JButton button0;
     JButton buttonDot;
-
+    JButton buttonEquals;
+    JButton buttonSplit;
+    JButton buttonMult;
+    JButton buttonAdd;
+    JButton buttonSubs;
 
 
     public UserInterface(){
@@ -89,13 +93,42 @@ public class UserInterface extends JFrame implements ActionListener {
         button0.addActionListener(this);
 
         buttonDot = new JButton(".");
-        buttonDot.setBounds(210,400,90,90);
+        buttonDot.setBounds(10,400,90,90);
         buttonDot.setFont(buttonsFont);
         add(buttonDot);
         buttonDot.addActionListener(this);
 
+        buttonEquals = new JButton("=");
+        buttonEquals.setBounds(210,400,90,90);
+        buttonEquals.setBackground(new Color(250,100,0));
+//        buttonEquals.setForeground(new Color(250,100,0));
+        buttonEquals.setFont(buttonsFont);
+        add(buttonEquals);
 
+        buttonDot.addActionListener(this);
+        buttonSplit = new JButton("/");
+        buttonSplit.setBounds(310,100,90,90);
+        buttonSplit.setFont(buttonsFont);
+        add(buttonSplit);
+        buttonSplit.addActionListener(this);
 
+        buttonMult = new JButton("x");
+        buttonMult.setBounds(310,200,90,90);
+        buttonMult.setFont(buttonsFont);
+        add(buttonMult);
+        buttonMult.addActionListener(this);
+
+        buttonAdd = new JButton("+");
+        buttonAdd.setBounds(310,300,90,90);
+        buttonAdd.setFont(buttonsFont);
+        add(buttonAdd);
+        buttonAdd.addActionListener(this);
+
+        buttonSubs = new JButton("-");
+        buttonSubs.setBounds(310,400,90,90);
+        buttonSubs.setFont(buttonsFont);
+        add(buttonSubs);
+        buttonSubs.addActionListener(this);
     }
 
     public static void main(String args[]){
@@ -108,6 +141,16 @@ public class UserInterface extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        Object source = e.getSource();
+        if (button0.equals(source)) {
+            System.out.println("hola");
+            ;
+            ;
+            ;
+        }
+        ;
+        ;
 
+        throw new IllegalStateException("Unexpected value: " + e.getSource());
     }
 }
