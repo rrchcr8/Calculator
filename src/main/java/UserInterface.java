@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 public class UserInterface extends JFrame implements ActionListener {
 
+    private JTextField display;
     JButton button1;
     JButton button2;
     JButton button3;
@@ -21,6 +22,10 @@ public class UserInterface extends JFrame implements ActionListener {
 
     public UserInterface(){
         setLayout(null);
+        display = new JTextField();
+        display.setBounds(10,10,400,70);
+        add(display);
+
         Font buttonsFont = new Font("calibri", 0, 40);
 
         button1 = new JButton("1");
@@ -95,7 +100,7 @@ public class UserInterface extends JFrame implements ActionListener {
 
     public static void main(String args[]){
         UserInterface UserInterface1 = new UserInterface();
-        UserInterface1.setBounds(0,0,600,700);
+        UserInterface1.setBounds(0,0,450,550);
         UserInterface1.setVisible(true);
         UserInterface1.setLocationRelativeTo(null);
         UserInterface1.setResizable(false);
