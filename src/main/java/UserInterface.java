@@ -14,6 +14,8 @@ public class UserInterface extends JFrame implements ActionListener {
     JButton button7;
     JButton button8;
     JButton button9;
+    JButton button0;
+    JButton buttonDot;
 
 
 
@@ -75,6 +77,17 @@ public class UserInterface extends JFrame implements ActionListener {
         add(button9);
         button9.addActionListener(this);
 
+        button0 = new JButton("0");
+        button0.setBounds(110,400,90,90);
+        button0.setFont(buttonsFont);
+        add(button0);
+        button0.addActionListener(this);
+
+        buttonDot = new JButton(".");
+        buttonDot.setBounds(210,400,90,90);
+        buttonDot.setFont(buttonsFont);
+        add(buttonDot);
+        buttonDot.addActionListener(this);
 
 
 
