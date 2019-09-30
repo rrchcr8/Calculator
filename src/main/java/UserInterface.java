@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class UserInterface extends JFrame implements ActionListener {
+    String operator = null;
+    String valueOne = null;
+    String valueTwo = null;
 
     private JTextField display;
     JButton button1;
@@ -27,6 +30,7 @@ public class UserInterface extends JFrame implements ActionListener {
     public UserInterface(){
         setLayout(null);
         display = new JTextField();
+        display.setFont(new Font("calibri",0,30));
         display.setBounds(10,10,400,70);
         add(display);
 
@@ -42,7 +46,7 @@ public class UserInterface extends JFrame implements ActionListener {
         button2.setBounds(110,100,90,90);
         button2.setFont(buttonsFont);
         add(button2);
-        button1.addActionListener(this);
+        button2.addActionListener(this);
 
         button3 = new JButton("3");
         button3.setBounds(210,100,90,90);
@@ -101,11 +105,11 @@ public class UserInterface extends JFrame implements ActionListener {
         buttonEquals = new JButton("=");
         buttonEquals.setBounds(210,400,90,90);
         buttonEquals.setBackground(new Color(250,100,0));
-//        buttonEquals.setForeground(new Color(250,100,0));
         buttonEquals.setFont(buttonsFont);
         add(buttonEquals);
+        buttonEquals.addActionListener(this);
 
-        buttonDot.addActionListener(this);
+
         buttonSplit = new JButton("/");
         buttonSplit.setBounds(310,100,90,90);
         buttonSplit.setFont(buttonsFont);
@@ -141,16 +145,68 @@ public class UserInterface extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Object source = e.getSource();
-        if (button0.equals(source)) {
-            System.out.println("hola");
-            ;
-            ;
-            ;
-        }
-        ;
-        ;
 
-        throw new IllegalStateException("Unexpected value: " + e.getSource());
+        if(e.getSource() == button0){
+            display.setText(display.getText()+"0");
+        } else if (e.getSource() == button1){
+            display.setText(display.getText()+"1");
+        } else if (e.getSource() == button2){
+            display.setText(display.getText()+"2");
+        } else if (e.getSource() == button3){
+            display.setText(display.getText()+"3");
+        } else if (e.getSource() == button4){
+            display.setText(display.getText()+"4");
+        }else if (e.getSource() == button5){
+            display.setText(display.getText()+"5");
+        } else if (e.getSource() == button6){
+            display.setText(display.getText()+"6");
+        } else if (e.getSource() == button7){
+            display.setText(display.getText()+"7");
+        } else if (e.getSource() == button8){
+            display.setText(display.getText()+"8");
+        } else if (e.getSource() == button9){
+            display.setText(display.getText()+"9");
+        } else if (e.getSource() == buttonDot) {
+            String string = display.getText();
+            if (string.length() <= 0) {
+                display.setText("0.");
+            } else if (!Calculator.existDot(string)) {
+                display.setText(display.getText() + ".");
+            }
+        } else if (e.getSource() == buttonSplit) {
+            if(!display.getText().equals("")){
+            valueOne=display.getText();
+            operator="/";
+            display.setText("");
+            }
+//            display.setText(display.getText() + "/");
+        } else if (e.getSource() == buttonAdd) {
+            if(!display.getText().equals("")){
+                valueOne=display.getText();
+                operator="+";
+                display.setText("");
+            }
+            //            display.setText(display.getText() + "+");
+        }else if (e.getSource() == buttonMult) {
+            if(!display.getText().equals("")){
+                valueOne=display.getText();
+                operator="x";
+                display.setText("");
+            }
+            //            display.setText(display.getText() + "*");
+        } else if (e.getSource() == buttonSubs) {
+            if(!display.getText().equals("")){
+                valueOne=display.getText();
+                operator="-";
+                display.setText("");
+            }
+            //            display.setText(display.getText() + "-");
+        } else if (e.getSource() == buttonEquals) {
+            valueTwo=display.getText();
+            if(!display.getText().equals("")) {
+                display.setText(Calculator.calculate(valueOne, valueTwo, operator));
+            }
+            }
     }
+
 }
